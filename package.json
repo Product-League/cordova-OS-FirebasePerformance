@@ -1,5 +1,5 @@
 {
-  "name": "com.outsystems.plugins.firebaseperformance",
+  "name": "cordova-OS-firebase-performance",
   "version": "2.0.0",
   "description": "Plugin to support firebase performance monitoring",
   "keywords": [
@@ -8,7 +8,7 @@
     "cordova-ios"
   ],
   "cordova": {
-    "id": "com.outsystems.plugins.firebaseperformance",
+    "id": "cordova-OS-firebase-performance",
     "platforms": [
       "android",
       "ios"
