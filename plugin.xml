@@ -12,7 +12,7 @@
   <hook type="before_plugin_install" src="hooks/android/installDependencies.js" />
   <hook type="before_plugin_install" src="hooks/android/unzipAndCopyDependencies.js" />
   
-  <dependency id="cordova-outsystems-firebase-core" url="https://github.com/psolipaPL/cordova-outsystems-firebase-core.git"/>
+  <dependency id="cordova-OS-firebase-core" url="https://github.com/psolipaPL/cordova-outsystems-firebase-core.git"/>
 
   <preference name="PERFORMANCE_MONITORING_ENABLED" default="true" />
   
