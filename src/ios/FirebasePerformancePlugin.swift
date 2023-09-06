@@ -9,12 +9,12 @@ import Foundation
 import Firebase
 
 class FirebasePerformancePlugin {
-    var traces = Dictionary<String, Any>()
+    var traces: [String: Trace] = [:]
     
     func starTrace(traceName: String){
-if !traceName.isEmpty {
+        if !traceName.isEmpty {
             if let trace = traces[traceName] {
-                (trace as? Trace)?.start()
+                trace.start()
             } else {
                 let trace = Performance.startTrace(name: traceName)
                 traces[traceName] = trace
@@ -25,10 +25,10 @@ if !traceName.isEmpty {
     func stopTrace(traceName: String) {
         if !traceName.isEmpty {
             if let trace = traces[traceName] {
-                (trace as? Trace)?.stop()
+                trace.stop()
             } else {
                 let trace = traces[traceName]
-                (trace as? Trace)?.stop()
+                trace?.stop()
             }
         }
     }
