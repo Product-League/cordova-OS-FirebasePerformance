@@ -11,7 +11,7 @@ class OSFirebasePerformance : CDVPlugin {
     @objc(startTrace:)
     func startTrace(command: CDVInvokedUrlCommand) {
         let traceName = command.arguments[0] as? String ?? ""
-        plugin.starTrace(traceName: traceName)
+        plugin.startTrace(traceName: traceName)
     }
     
     @objc(stopTrace:)
