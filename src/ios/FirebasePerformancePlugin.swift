@@ -19,11 +19,11 @@ class FirebasePerformancePlugin {
     }
     
     func stopTrace(traceName: String) {
-        if !traceName.isEmpty {
-            let trace = traces[traceName]
-                
-            trace.stop()
-            traces.removeValue(forKey: traceName)
+        if !traceName.isEmpty { 
+            if let trace = traces[traceName] {
+                trace.stop()
+                traces.removeValue(forKey: traceName)
+            }
         }
     }
 
