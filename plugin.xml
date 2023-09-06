@@ -67,7 +67,6 @@
         </config>
         <pods>
             <pod name="Firebase/Performance" spec="$IOS_FIREBASE_PERFORMANCE_VERSION" />
-            <swift_version>5.0</swift_version>
         </pods>
     </podspec>
   </platform>
