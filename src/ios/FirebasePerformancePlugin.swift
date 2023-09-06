@@ -21,7 +21,7 @@ class FirebasePerformancePlugin {
     func stopTrace(traceName: String) {
         if !traceName.isEmpty {
             let trace = traces[traceName]
-            if (trace !== nil)
+            if trace !== nil
             {
                 trace.stop()
                 let index = traces.firstIndex(of: traceName)
