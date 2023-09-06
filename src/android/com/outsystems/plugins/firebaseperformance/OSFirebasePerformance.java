@@ -65,17 +65,12 @@ public class OSFirebasePerformance extends CordovaPlugin {
             return;
         }
         if(!traceName.isEmpty()){
-            if(traces.containsKey(traceName)){
-                trace = traces.get(traceName);
-            }
-            else{
-                trace = FirebasePerformance.getInstance().newTrace(traceName);
-                traces.put(traceName, trace);
-            }
+            trace = FirebasePerformance.getInstance().newTrace(traceName);
+            traces.put(traceName, trace);
             trace.start();
         }
     }
-
+  
     private void stopTrace(JSONArray args, CallbackContext callbackContext) {
         String traceName = null;
         try {
@@ -85,8 +80,10 @@ public class OSFirebasePerformance extends CordovaPlugin {
             return;
         }
         Trace trace = traces.get(traceName);
-        trace.stop();
-        traces.remove(traceName);
+        if (trace != null) {  
+            trace.stop();
+            traces.remove(traceName);
+        }
     }
 
     private void addTraceAttribute(JSONArray args, CallbackContext callbackContext) {
