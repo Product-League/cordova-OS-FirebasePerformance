@@ -1,14 +1,18 @@
-import UIKit
+//
+//  FirebasePerformancePlugin.swift
+//  Firebase Sample App
+//
+//  Created by Carlos Correa on 12/03/2021.
+//
+
+import Foundation
 import Firebase
 
-@objc(OSFirebasePerformance)
-class OSFirebasePerformance : CDVPlugin {
+class FirebasePerformancePlugin {
     var traces = Dictionary<String, Any>()
     
-    @objc(startTrace:)
-    func startTrace(command: CDVInvokedUrlCommand) {
-        let traceName = command.arguments[0] as? String ?? ""
-        if !traceName.isEmpty {
+    func starTrace(traceName: String){
+if !traceName.isEmpty {
             if let trace = traces[traceName] {
                 (trace as? Trace)?.start()
             } else {
@@ -16,12 +20,9 @@ class OSFirebasePerformance : CDVPlugin {
                 traces[traceName] = trace
             }
         }
-
     }
     
-    @objc(stopTrace:)
-    func stopTrace(command: CDVInvokedUrlCommand) {
-        let traceName = command.arguments[0] as? String ?? ""
+    func stopTrace(traceName: String) {
         if !traceName.isEmpty {
             if let trace = traces[traceName] {
                 (trace as? Trace)?.stop()
@@ -31,28 +32,33 @@ class OSFirebasePerformance : CDVPlugin {
             }
         }
     }
-    
-    @objc(addTraceAttribute:)
-    func addTraceAttribute(command: CDVInvokedUrlCommand) {
-    }
-    
-    @objc(incrementMetric:)
-    func incrementMetric(command: CDVInvokedUrlCommand) {
-        let traceName = command.arguments[0] as? String ?? ""
-        let metricName = command.arguments[1] as? String ?? ""
-        let value = command.arguments[2] as? Int64 ?? 0
-        
-        if !traceName.isEmpty && !metricName.isEmpty && value != 0 {
+
+    func addTraceAttribute(traceName: String, attributeName: String ,value: String) {
+        if !traceName.isEmpty && !attributeName.isEmpty && !value.isEmpty {
             if let trace = traces[traceName] {
-                (trace as? Trace)?.incrementMetric(metricName, by: value)
+                trace.setValue(attributeName, forAttribute: value)
             }
         }
     }
     
-    @objc(setPerformanceCollectionEnabled:)
-    func setPerformanceCollectionEnabled(command: CDVInvokedUrlCommand) {
-        let enabled = command.arguments[0] as? Bool ?? false
-        Performance.sharedInstance().isDataCollectionEnabled = enabled
+    func removeTraceAttribute(traceName: String, attributeName: String) {
+        if !traceName.isEmpty && !attributeName.isEmpty {
+            if let trace = traces[traceName] {
+                trace.removeAttribute(attributeName)
+            }
+        }
+    }
+
+    func incrementMetric(traceName: String, metricName: String ,value: Int64) {
+        if !traceName.isEmpty && !metricName.isEmpty && value != 0 {
+            if let trace = traces[traceName] {
+                trace.incrementMetric(metricName, by: value)
+            }
+        }
     }
     
+    func setPerformanceCollectionEnabled(enabled: Bool) {
+        Performance.sharedInstance().isDataCollectionEnabled = enabled
+    }
+        
 }
