@@ -7,36 +7,24 @@
 
 import Foundation
 import Firebase
-import os
 
 class FirebasePerformancePlugin {
     var traces: [String: Trace] = [:]
     
     func starTrace(traceName: String){
         if !traceName.isEmpty {
-            if let trace = traces[traceName] {
-                trace.start()
-            } else {
-                let trace = Performance.startTrace(name: traceName)
-                traces[traceName] = trace
-            }
+            let trace = Performance.startTrace(name: traceName)
+            traces[traceName] = trace
         }
     }
     
     func stopTrace(traceName: String) {
         if !traceName.isEmpty {
-            if let trace = traces[traceName] {
-                logger.trace("Trace to delete: "+ trace)
-                logger.trace("Traces before: " + traces)
-                trace.stop()
-                logger.trace("Traces after: " + traces)
-            } else {
-                let trace = traces[traceName]
-                logger.trace("Trace to delete: "+ trace)
-                logger.trace("Traces before: " + traces)
-                trace?.stop()
-                logger.trace("Traces after: " + traces)
-            }
+            let trace = traces[traceName]
+                
+            trace.stop()
+            let index = traces.index(of: traceName)
+            traces.remove(at: index)
         }
     }
 
