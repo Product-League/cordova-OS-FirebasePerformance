@@ -23,7 +23,7 @@ class FirebasePerformancePlugin {
             let trace = traces[traceName]
                 
             trace.stop()
-            let index = traces.index(of: traceName)
+            let index = traces.firstIndex(of: traceName)
             traces.remove(at: index)
         }
     }
