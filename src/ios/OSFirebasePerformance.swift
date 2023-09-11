@@ -1,5 +1,7 @@
 import UIKit
-import Firebase
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseAuth
 
 @objc(OSFirebasePerformance)
 class OSFirebasePerformance : CDVPlugin {
