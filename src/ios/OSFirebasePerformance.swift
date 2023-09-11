@@ -6,7 +6,7 @@ class OSFirebasePerformance : CDVPlugin {
     var plugin: FirebasePerformancePlugin!
     
     override func pluginInitialize() {
-        //plugin = FirebasePerformancePlugin()
+        plugin = FirebasePerformancePlugin()
         FirebaseApp.configure()
     }
     
