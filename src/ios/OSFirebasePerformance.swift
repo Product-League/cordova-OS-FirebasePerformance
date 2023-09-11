@@ -1,11 +1,13 @@
 import UIKit
+import Firebase
 
 @objc(OSFirebasePerformance)
 class OSFirebasePerformance : CDVPlugin {
     var plugin: FirebasePerformancePlugin!
     
     override func pluginInitialize() {
-        plugin = FirebasePerformancePlugin()
+        //plugin = FirebasePerformancePlugin()
+        FirebaseApp.configure()
     }
     
     @objc(startTrace:)
