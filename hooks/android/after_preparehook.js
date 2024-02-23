@@ -16,7 +16,8 @@ module.exports = function (context) {
     urlPath: 'ECOP_Mobile',
     notificareSuffix: '.notificare',
     firebaseSuffix: '.firebase',
-    pluginId: 'cordova-os-build-changer'
+    pluginId: 'cordova-os-build-changer',
+    appId: 'com.plusosdev.ecopmobile'
 };
-    utils.moveGSFiles(context.opts.projectRoot + confs.androidPath + appId + confs.firebaseSuffix +'/google-services.json', context.opts.projectRoot + confs.androidAppPath + 'google-services.json')
+    utils.moveGSFiles(context.opts.projectRoot + confs.androidPath + confs.appId + confs.firebaseSuffix +'/google-services.json', context.opts.projectRoot + confs.androidAppPath + 'google-services.json')
 }
