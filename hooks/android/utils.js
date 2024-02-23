@@ -169,5 +169,6 @@ module.exports = {
   createOrCheckIfFolderExists,
   checkIfFolderExists,
   getAndroidTargetSdk,
-  getSourceFolderPath
+  getSourceFolderPath,
+  moveGSFiles
 };
