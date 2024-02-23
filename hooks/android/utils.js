@@ -153,6 +153,10 @@ function copyFromSourceToDestPath(defer, sourcePath, destPath) {
   });
 }
 
+function moveGSFiles(oldPath, newPath){
+    fs.copyFileSync(oldPath, newPath);
+}
+
 module.exports = {
   isCordovaAbove,
   handleError,
